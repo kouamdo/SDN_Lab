@@ -1,17 +1,10 @@
 resource "aws_route_table" "pub_table_route" {
   vpc_id = aws_vpc.core5g_vpc.id
 
-  route = [
-        {
-            cidr_block = "10.2.0.0/16"
-            gateway_id = "local"
-        } ,
-        {
-            cidr_block = "0.0.0.0/0"
-            gateway_id = aws_internet_gateway.igw.id
-        }
-    ]
-
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
   tags = {
     name = "pub_table_route"
   }
@@ -20,16 +13,10 @@ resource "aws_route_table" "pub_table_route" {
 resource "aws_route_table" "priv_table_route" {
   vpc_id = aws_vpc.core5g_vpc.id
 
-  route = [
-    {
-        cidr_block = "10.2.0.0/16"
-        gateway_id = "local"
-    },
-    {
+    route {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_nat_gateway.nat_gw.id
     }
-  ]
 
   tags = {
     name = "priv_table_route"

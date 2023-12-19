@@ -21,7 +21,6 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_nat_gateway" "nat_gw" {
   subnet_id = aws_subnet.pub_subnet.id
   allocation_id = aws_eip.eip_nat.id
-  connectivity_type = public
 
   tags = {
     name = "nat_gw"
@@ -47,7 +46,7 @@ output "nat_gateway_ip" {
 #Create subnet for signaling
 resource "aws_subnet" "subnet_sig_1" {
   vpc_id = aws_vpc.core5g_vpc.id
-  cidr_block = ""
+  cidr_block = "10.2.2.0/24"
   availability_zone = var.av-1
 
   tags = {
@@ -56,7 +55,7 @@ resource "aws_subnet" "subnet_sig_1" {
 }
 resource "aws_subnet" "subnet_sig_2" {
   vpc_id = aws_vpc.core5g_vpc.id
-  cidr_block = ""
+  cidr_block = "10.2.3.0/24"
   availability_zone = var.av-2
 
   tags = {
@@ -67,7 +66,7 @@ resource "aws_subnet" "subnet_sig_2" {
 #Create subnet for data_plan
 resource "aws_subnet" "subnet_dp_1" {
   vpc_id = aws_vpc.core5g_vpc.id
-  cidr_block = ""
+  cidr_block = "10.2.4.0/24"
   availability_zone = var.av-1
 
   tags = {
@@ -76,7 +75,7 @@ resource "aws_subnet" "subnet_dp_1" {
 }
 resource "aws_subnet" "subnet_dp_2" {
   vpc_id = aws_vpc.core5g_vpc.id
-  cidr_block = ""
+  cidr_block = "10.2.5.0/24"
   availability_zone = var.av-2
 
   tags = {
@@ -87,7 +86,7 @@ resource "aws_subnet" "subnet_dp_2" {
 #Create subnet for k8s
 resource "aws_subnet" "subnet_k8s_1" {
   vpc_id = aws_vpc.core5g_vpc.id
-  cidr_block = ""
+  cidr_block = "10.2.6.0/24"
   availability_zone = var.av-1
 
   tags = {
@@ -98,7 +97,7 @@ resource "aws_subnet" "subnet_k8s_1" {
 #Create public subnet
 resource "aws_subnet" "pub_subnet" {
   vpc_id = aws_vpc.core5g_vpc.id
-  cidr_block = ""
+  cidr_block = "10.2.7.0/24"
   availability_zone = var.av-1
 
   tags = {

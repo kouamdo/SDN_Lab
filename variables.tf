@@ -10,10 +10,10 @@ variable "instance_type" {
 
 variable "av-1" {
   type = string
-  default = "eu-west-3a"
+  default = "us-east-1a"
 }
 
 variable "av-2" {
   type = string
-  default = "eu-west-3b"
+  default = "us-east-1b"
 }
