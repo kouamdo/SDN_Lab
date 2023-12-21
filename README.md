@@ -1,8 +1,8 @@
 # Cloud native with DP 😎
 
-Want to make  5G core using EKS.
+## make  5G core using EKS.
 
-Also , try to adapt with good cni like calico  and multus.
+### Also , try to adapt with good cni like calico  and multus. 🙌🏾
 
 At the end , use compatible ec2 infra for eBPF/DPDK/SRIOV
 
