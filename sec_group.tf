@@ -1,5 +1,5 @@
 resource "aws_security_group" "pub_sec_group" {
-  name        = "allow-ssh-and-internet"
+  name        = "allow-ssh-and-internet-pub"
   description = "Allow SSH and Internet access inside host in pub subnet"
   vpc_id      = aws_vpc.core5g_vpc.id
 
@@ -30,7 +30,7 @@ resource "aws_security_group" "pub_sec_group" {
 
 
 resource "aws_security_group" "priv_sec_group" {
-  name        = "allow-ssh-and-internet"
+  name        = "allow-ssh-and-internet-priv"
   description = "Allow SSH and Internet access"
   vpc_id      = aws_vpc.core5g_vpc.id
 
