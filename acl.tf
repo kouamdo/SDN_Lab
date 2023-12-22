@@ -24,9 +24,20 @@ resource "aws_network_acl_rule" "pub_ssh_out_rule" {
 resource "aws_network_acl_rule" "pub_sub_internet_rule" {
     network_acl_id = aws_network_acl.pub_sub_acl.id
     rule_number    = 300
-    protocol       = "tcp"
+    protocol       = "-1"
     rule_action    = "allow"
     egress         = true
+    cidr_block     = "0.0.0.0/0"
+    from_port      = 0
+    to_port        = 0
+}
+
+resource "aws_network_acl_rule" "pub_sub_internet_in_rule" {
+    network_acl_id = aws_network_acl.pub_sub_acl.id
+    rule_number    = 310
+    protocol       = "tcp"
+    rule_action    = "allow"
+    egress         = false
     cidr_block     = "0.0.0.0/0"
     from_port      = 0
     to_port        = 65535
@@ -50,7 +61,7 @@ resource "aws_network_acl_rule" "k8s_sub_internet_rule" {
     rule_number    = 300
     protocol       = "tcp"
     rule_action    = "allow"
-    egress         = true
+    egress         = false
     cidr_block     = "0.0.0.0/0"
     from_port      = 0
     to_port        = 65535
@@ -66,6 +77,18 @@ resource "aws_network_acl_rule" "k8s_sub_ssh_rule" {
     from_port      = 22
     to_port        = 22
 }
+
+resource "aws_network_acl_rule" "k8s_sub_internet_out_rule" {
+    network_acl_id = aws_network_acl.k8s_sub_acl.id
+    rule_number    = 310
+    protocol       = "-1"
+    rule_action    = "allow"
+    egress         = true
+    cidr_block     = "0.0.0.0/0"
+    from_port      = 0
+    to_port        = 0
+}
+
 
 resource "aws_network_acl" "k8s_sub_acl" {
     vpc_id = aws_vpc.core5g_vpc.id
