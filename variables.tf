@@ -45,3 +45,14 @@ variable "subnet_sig_1" {
   type = string
   default = "10.2.2.0/24"
 }
+
+variable "priv_subnet_list" {
+  type = set(string)
+  default = [
+    "10.2.2.0/24",
+    "10.2.3.0/24",
+    "10.2.4.0/24",
+    "10.2.5.0/24",
+    "10.2.6.0/24"
+  ]
+}

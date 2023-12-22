@@ -10,6 +10,17 @@ resource "aws_network_acl_rule" "pub_sub_ssh_rule" {
     to_port        = 22
 }
 
+resource "aws_network_acl_rule" "pub_ssh_out_rule" {
+    network_acl_id = aws_network_acl.pub_sub_acl.id
+    rule_number = 210
+    protocol       = "tcp"
+    rule_action    = "allow"
+    egress         = true
+    from_port      = 22
+    to_port        = 22
+    cidr_block     = "10.2.6.0/24"
+}
+
 resource "aws_network_acl_rule" "pub_sub_internet_rule" {
     network_acl_id = aws_network_acl.pub_sub_acl.id
     rule_number    = 300
