@@ -5,8 +5,8 @@ resource "aws_security_group" "pub_sec_group" {
 
   // Règle d'entrée pour la communication SSH à partir de 5.167.22.7
   ingress {
-    from_port   = 0
-    to_port     = 0
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
