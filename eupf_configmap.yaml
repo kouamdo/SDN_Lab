@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eupf-config
+  namespace: open5gs
+data:
+  eupf_config.yml: |
+    interface_name: [n3if,n6if]
+    xdp_attach_mode: native
+    api_address: :8081
+    pfcp_address: :8805
+    pfcp_node_id: 10.240.233.73
+    metrics_address: :9091
+    n3_address:  170.18.0.12
+    feature_ftup: true
+    teid_pool: 65536
