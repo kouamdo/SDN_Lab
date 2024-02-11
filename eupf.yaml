@@ -81,6 +81,11 @@ spec:
             ip rule add from 10.33.0.0/16 table n6ifr;
             ip route add default via 172.18.0.13 dev n6if table n6ifr &&
             sh /app/bin/entrypoint.sh --config /app/bin/eupf_config.yml
+        resources:
+          requests:
+            intel.com/intel_sriov_ixgbevf: '2'
+          limits:
+            intel.com/intel_sriov_ixgbevf: '2'
         env:
         - name: GIN_MODE
           value: "release"
