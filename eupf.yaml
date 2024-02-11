@@ -44,12 +44,12 @@ spec:
           {
             "name" : "n3-eupf",
             "interface": "n3if",
-            "ips": ["172.16.0.12"]
+            "ips": ["172.16.0.12/24"]
           },
           {
             "name" : "n6-eupf",
             "interface": "n6if",
-            "ips": ["172.18.0.12"]
+            "ips": ["172.18.0.12/24"]
           }
         ]'
       labels:
