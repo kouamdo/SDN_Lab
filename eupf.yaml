@@ -79,7 +79,7 @@ spec:
             mkdir -p /etc/iproute2/;
             echo "1000 n6ifr" >> /etc/iproute2/rt_tables;
             ip rule add from 10.33.0.0/16 table n6ifr;
-            ip route add default via 172.16.0.13 dev eth2 table n6ifr &&
+            ip route add default via 172.18.0.13 dev n6if table n6ifr &&
             sh /app/bin/entrypoint.sh --config /app/bin/eupf_config.yml
         env:
         - name: GIN_MODE
