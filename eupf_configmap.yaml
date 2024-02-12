@@ -11,6 +11,6 @@ data:
     pfcp_address: :8805
     pfcp_node_id: 10.240.233.73
     metrics_address: :9091
-    n3_address:  170.16.0.12
+    n3_address:  172.16.0.12
     feature_ftup: true
     teid_pool: 65536
