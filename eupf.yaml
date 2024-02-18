@@ -99,3 +99,52 @@ spec:
         - name: eupf-config
           mountPath: /app/bin/eupf_config.yml
           subPath: eupf_config.yml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nat-dn
+  namespace: open5gs
+  labels:
+    epc-mode: nat-dn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      epc-mode: nat-dn
+  template:
+    metadata:
+      annotations:
+        "cni.projectcalico.org/ipAddrs": "[\"10.240.233.93\"]"
+        k8s.v1.cni.cncf.io/networks: '[
+          {
+            "name" : "n6-dn",
+            "interface": "n6if",
+            "ips": ["172.18.0.13/24"]
+          }
+        ]'
+      labels:
+        epc-mode: nat-dn
+    spec:
+      containers:
+      - name: dn-nat
+        image: ubuntu:focal
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        command:
+          - /bin/sh
+          - -c
+          - >
+            apt update && apt install -y iproute2 tcpdump iptables;
+            sysctl -w net.ipv6.conf.all.disable_ipv6=1;
+            echo 1 > /proc/sys/net/ipv4/ip_forward;
+            iptables -t nat -A POSTROUTING -s 10.45.0.1/16 -j MASQUERADE &&
+            ip ro add 10.45.0.1/16 via 172.18.0.12 dev eth0;
+            echo "done";
+            tail -f /dev/null
+        resources:
+          requests:
+            intel.com/intel_sriov_ixgbevf: '1'
+          limits:
+            intel.com/intel_sriov_ixgbevf: '1'
