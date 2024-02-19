@@ -69,7 +69,7 @@ spec:
           name: eupf-config
       containers:
       - name: eupf
-        image: c
+        image: docker.io/local/eupf:latest
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true
