@@ -33,10 +33,7 @@ spec:
                     "type": "host-device",
                     "capabilities": { "ips": true },
                     "ipam": {
-                        "type": "static",
-                        "routes": [{
-			  "dst": "0.0.0.0/0"
-			}]
+                        "type": "static"
                     }
                 }]
         }'
@@ -56,11 +53,7 @@ spec:
                     "type": "host-device",
                     "capabilities": { "ips": true },
                     "ipam": {
-                        "type": "static",
-                        "routes": [{
-			  "dst": "0.0.0.0/0"
-			}]
+                        "type": "static"
                     }
                 }]
         }'
-        
