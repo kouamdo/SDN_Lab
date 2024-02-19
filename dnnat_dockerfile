@@ -1,0 +1,6 @@
+FROM ubuntu:focal
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update &&    apt-get -yq dist-upgrade &&    apt-get --no-install-recommends -qqy install python3-pip net-tools  python3-setuptools python3-wheel build-essential git libsctp-dev    libgcrypt-dev libssl-dev libidn11-dev libmongoc-dev libbson-dev libyaml-dev libnghttp2-dev libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev libtins-dev libtalloc-dev meson iproute2    iptables iputils-ping tcpdump cmake curl gnupg
+WORKDIR /
