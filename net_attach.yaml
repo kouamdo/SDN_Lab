@@ -21,7 +21,7 @@ data:
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
-  name: n6-dn
+  name: n3-dp-net
   namespace: open5gs
   annotations:
     k8s.v1.cni.cncf.io/resourceName: intel.com/intel_sriov_ixgbevf
@@ -32,9 +32,11 @@ spec:
                 {
                     "type": "host-device",
                     "capabilities": { "ips": true },
-                    "pciBusID": "0000:00:06.0",
                     "ipam": {
-                        "type": "static"
+                        "type": "static",
+                        "routes": [{
+			  "dst": "0.0.0.0/0"
+			}]
                     }
                 }]
         }'
@@ -42,7 +44,7 @@ spec:
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
-  name: n3-eupf
+  name: n6-dp-net
   namespace: open5gs
   annotations:
     k8s.v1.cni.cncf.io/resourceName: intel.com/intel_sriov_ixgbevf
@@ -53,30 +55,12 @@ spec:
                 {
                     "type": "host-device",
                     "capabilities": { "ips": true },
-                    "pciBusID": "0000:00:04.0",
                     "ipam": {
-                        "type": "static"
+                        "type": "static",
+                        "routes": [{
+			  "dst": "0.0.0.0/0"
+			}]
                     }
                 }]
         }'
----  
-apiVersion: "k8s.cni.cncf.io/v1"
-kind: NetworkAttachmentDefinition
-metadata:
-  name: n6-eupf
-  namespace: open5gs
-  annotations:
-    k8s.v1.cni.cncf.io/resourceName: intel.com/intel_sriov_ixgbevf
-spec:
-  config: '{
-            "cniVersion": "0.3.1",
-            "plugins": [
-                {
-                    "type": "host-device",
-                    "capabilities": { "ips": true },
-                    "pciBusID": "0000:00:05.0",
-                    "ipam": {
-                        "type": "static"
-                    }
-                }]
-        }'
+        
