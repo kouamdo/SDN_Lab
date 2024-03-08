@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-This project aims to implement a 5G network core using Cloud Native principles and dataplane tools such as eBPF and VPP/DPDK. The entire setup is deployed on the AWS EKS infrastructure.
+This project aims to implement a 5G network core using Cloud Native principles and dataplane tools such as eBPF and VPP/DPDK. The entire setup is deployed on the AWS EKS infrastructure. We are specifically focusing on the dataplane part, where we use dataplane tools as well as eUPF and UPG-VPP solutions.
 
 ## Objectives
 
-The main objective of this project is to leverage the benefits of Cloud Native and dataplane tools to optimize the performance and flexibility of the 5G network core. By using AWS EKS, we can easily manage, deploy, and scale our application.
+This project aims to implement a 5G network core using Cloud Native principles and dataplane tools such as eBPF and VPP/DPDK. The entire setup is deployed on the AWS EKS infrastructure. We are specifically focusing on the dataplane part, where we use dataplane tools as well as eUPF and UPG-VPP solutions.
 
 ![eks_5g](https://github.com/kouamdo/SDN_Lab/assets/39982727/3aec4cf3-3d62-455b-979a-85f6d529823c)
 
