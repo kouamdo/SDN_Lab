@@ -1,4 +1,4 @@
-#Create VPC
+ #Create VPC
 resource "aws_vpc" "core5g_vpc" {
   cidr_block = "10.2.0.0/16"
 
