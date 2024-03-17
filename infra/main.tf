@@ -34,9 +34,6 @@ resource "aws_eip" "eip_nat" {
   vpc = true
 }
 
-output "nat_gateway_ip" {
-  value = aws_eip.eip_nat.public_ip
-}
 
 #----
 
